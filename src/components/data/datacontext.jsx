@@ -28,8 +28,9 @@ const DataProvider = ({ children }) => {
       .then((res) => {
         const { result, response, error } = res.data;
         if (result) {
-          set_all_videos(response);
-          localStorage.setItem("videos", JSON.stringify(response));
+          const sorted = sort_videos_by_place(response);
+          set_all_videos(sorted);
+          localStorage.setItem("videos", JSON.stringify(sorted));
         } else {
           console.log(error);
           alert("مشکلی در گرفتن ویدئو های پیش آمده");
@@ -39,6 +40,14 @@ const DataProvider = ({ children }) => {
         console.log(e);
         alert("مشکلی در گرفتن ویدئو های پیش آمده");
       });
+  };
+  const sort_videos_by_place = (arr) => {
+    const sorted = [];
+    for (let i = 1; i <= arr.length; i++) {
+      const in_place = arr.find((item) => item.place === i);
+      if (in_place) sorted.push(in_place);
+    }
+    return sorted;
   };
   return (
     <DataContext.Provider
