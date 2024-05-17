@@ -1,9 +1,14 @@
-import React, { useContext, useState } from "react";
-import { DataContext } from "../data/datacontext";
+import {
+  default as React,
+  default as React,
+  useContext,
+  useState,
+} from "react";
 import { Helmet } from "react-helmet";
+import { DataContext } from "../data/datacontext";
 import DrVideo from "../DrVideo/DrVideo";
-import { BsListNested } from "react-icons/bs";
-const Home = () => {
+
+const CatPage = () => {
   const { all_videos } = useContext(DataContext);
   const [filter, set_filter] = useState(false);
   const seprate_cats = (videos) => {
@@ -98,4 +103,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default CatPage;

@@ -31,6 +31,7 @@ const DataProvider = ({ children }) => {
           const sorted = sort_videos_by_place(response);
           set_all_videos(sorted);
           localStorage.setItem("videos", JSON.stringify(sorted));
+          console.log(response);
         } else {
           console.log(error);
           alert("مشکلی در گرفتن ویدئو های پیش آمده");
